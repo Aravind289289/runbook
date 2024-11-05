@@ -1,12 +1,11 @@
 Runbook Title: CI/CD Jenkins Pipeline Deployment
 
-Last Updated: [Date]
-
-Author: [Your Name]
+Author: Aravind Kumar Gadde
 
 Purpose: This runbook provides detailed instructions for deploying applications using Jenkins CI/CD pipelines. It includes setup, triggering builds, handling failures, and rolling back deployments.
 
 Table of Contents
+
 Prerequisites
 Jenkins Setup
 Pipeline Configuration
@@ -16,15 +15,17 @@ Handling Build Failures
 Rolling Back Deployments
 Common Issues and Troubleshooting
 References
+
 1. Prerequisites
 Access to Jenkins server with appropriate permissions.
 Jenkins installed and configured with necessary plugins (e.g., Git, Docker, Pipeline).
 Source code repository set up (e.g., GitHub, Bitbucket).
 Application artifacts and Docker images should be available in the relevant repositories.
+
 2. Jenkins Setup
 Log in to Jenkins:
 
-Open your web browser and navigate to http://<your-jenkins-url>.
+Open your web browser and navigate to Jenkins URL.
 Enter your username and password.
 Configure Global Tools:
 
@@ -37,7 +38,8 @@ Ensure the following plugins are installed:
 Git Plugin
 Pipeline Plugin
 Docker Pipeline
-Slack Notification (if using Slack)
+Slack Notification
+
 3. Pipeline Configuration
 Create a New Pipeline:
 
@@ -97,6 +99,8 @@ pipeline {
         }
     }
 }
+
+
 4. Triggering a Build
 Manual Trigger:
 
@@ -107,10 +111,12 @@ Automatic Trigger:
 Set up webhooks in your source code repository (e.g., GitHub) to trigger a build on push.
 Go to your GitHub repository > Settings > Webhooks > Add webhook.
 Set the payload URL to http://<your-jenkins-url>/github-webhook/ and select the events you want to trigger the build.
+
 5. Monitoring Builds
 Monitor build progress on the Jenkins dashboard.
 View console output by clicking on the build number in the job view.
 Check for build artifacts in the Workspace or configured storage.
+
 6. Handling Build Failures
 Identify Failure:
 
@@ -124,6 +130,7 @@ Rerun the build after fixing the issues.
 Notify Team:
 
 Ensure that notifications are sent via Slack or email to inform the team about build failures.
+
 7. Rolling Back Deployments
 Identify the Last Stable Version:
 
@@ -137,10 +144,12 @@ docker tag your-image:previous_version your-image:latest
 Redeploy:
 
 Trigger the deployment stage in Jenkins to deploy the stable version.
+
 8. Common Issues and Troubleshooting
 Jenkins Not Starting: Check the Jenkins log files for errors and ensure sufficient system resources.
 Plugin Issues: If a plugin fails, try updating or reinstalling it.
 Network Issues: Ensure Jenkins can access external services (e.g., GitHub, Docker registry).
+
 9. References
 Jenkins Documentation
 GitHub Webhooks Documentation
